@@ -1,0 +1,25 @@
+# Maven specific
+target/
+
+# Eclipse specific
+.classpath
+.project
+.settings/
+
+# IDE specific directories (IntelliJ, NetBeans, etc.)
+.idea/
+nbproject/
+
+# Logs
+*.log
+
+# Compiled files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Miscellaneous
+.DS_Store
