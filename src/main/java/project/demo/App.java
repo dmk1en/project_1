@@ -1,11 +1,7 @@
 package project.demo;
 
-import project_1.scan.urlScan;
+import project.scan.urlScan;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )

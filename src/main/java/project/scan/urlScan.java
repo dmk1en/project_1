@@ -1,4 +1,4 @@
-package project_1.scan;
+package project.scan;
 
 import java.util.Base64;
 import okhttp3.OkHttpClient;
