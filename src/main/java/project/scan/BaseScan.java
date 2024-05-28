@@ -20,7 +20,7 @@ public class BaseScan {
     }
 
     public List<Map<String, List<List<String>>>> scan() {
-
+        
 
         //Create Request object with the URL
         Request request = new Request.Builder()
@@ -41,13 +41,13 @@ public class BaseScan {
                 if (responseBody != null) {
                 	String json = responseBody;
                     
-                    // push the data to a csv file
-                    // push_csv get = new push_csv(json);
+                    // //push the data to a csv file
+                    // PushCsv get = new PushCsv(json);
                     // get.push();
 
                 	JSONObject jsonObject = new JSONObject(json);
-                	Sort sort = new Sort(jsonObject);
-                    return sort.combineLists();
+                	return new Sort(jsonObject).combineLists();
+                    
                 }
                 return null;
             } else {

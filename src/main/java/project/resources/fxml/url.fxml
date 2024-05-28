@@ -108,7 +108,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="500.0" prefWidth="586.0" style="-fx-background-color: #020117;">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="580.0" style="-fx-background-color: #020117;">
+                        <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="500.0" prefWidth="580.0" style="-fx-background-color: #020117;">
                            <content>
                               <GridPane fx:id="grid" prefHeight="498.0" prefWidth="587.0" style="-fx-background-color: #020117;">
                                 <columnConstraints>

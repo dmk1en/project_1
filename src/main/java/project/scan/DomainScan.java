@@ -16,5 +16,4 @@ public class DomainScan {
         BaseScan baseScan = new BaseScan(url);
         return baseScan.scan();
     }
-
 }

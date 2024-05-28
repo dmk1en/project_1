@@ -54,6 +54,10 @@ public class BaseController {
 	
 	@FXML
 	public void listResult(List<Map<String, List<List<String>>>> s){
+		if (grid.getChildren() != null) {
+			grid.getChildren().clear();
+		}
+		
 		if (s != null) {
 			int rowNum = 0;
 			for (Map<String, List<List<String>>> categoryMap : s) {

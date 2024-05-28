@@ -16,11 +16,5 @@ public class UrlScan{
 		BaseScan baseScan = new BaseScan(url);
         return baseScan.scan();
 	}
-
-	public static void main(String[] args) {
-		UrlScan urlScan = new UrlScan("https://www.google.com");
-		urlScan.scan();
-	}
-	
 }
 
