@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.demo.controller.UrlController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.demo.controller.IpController">
    <children>
       <VBox maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="200.0" style="-fx-background-color: #110e38;">
          <children>
@@ -97,7 +97,7 @@
                         <Pane prefHeight="200.0" prefWidth="132.0">
                            <children>
                               <Button fx:id="submitButton" layoutX="276.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleIpSubmitButtonAction" text="Scan" />
-                              <TextField fx:id="url" layoutX="47.0" layoutY="48.0" prefHeight="25.0" prefWidth="529.0" promptText="Enter IP address" />
+                              <TextField fx:id="ip" layoutX="47.0" layoutY="48.0" prefHeight="25.0" prefWidth="529.0" promptText="Enter IP address" />
                            </children>
                         </Pane>
                      </children>

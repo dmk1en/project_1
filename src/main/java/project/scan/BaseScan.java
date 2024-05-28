@@ -44,6 +44,11 @@ public class BaseScan {
                 String responseBody = Response.body().string();
                 if (responseBody != null) {
                 	String json = responseBody;
+                    
+                    // push the data to a csv file
+                    push_csv get = new push_csv(json);
+                    get.push();
+
                 	JSONObject jsonObject = new JSONObject(json);
                 	Sort sort = new Sort(jsonObject);
                 	List<Map<String, List<List<String>>>> combinedLists = sort.combineLists(); //sort the data
@@ -59,7 +64,6 @@ public class BaseScan {
         }
         
 	}
-
 
 
 
