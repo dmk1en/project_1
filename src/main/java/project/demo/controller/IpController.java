@@ -15,10 +15,10 @@ public class IpController extends BaseController {
     
     @FXML
 	public void handleIpSubmitButtonAction(ActionEvent event) {
-		String SubmittedUrl = ip.getText();	
-		if (SubmittedUrl != null) {
+		String submittedIp = ip.getText();	
+		if (submittedIp != null) {
 			new Thread(() -> {
-				List<Map<String, List<List<String>>>> s = new IpScan(SubmittedUrl).scan();
+				List<Map<String, List<List<String>>>> s = new IpScan(submittedIp).scan();
 				Platform.runLater(() -> {
 					listResult(s);
 				});

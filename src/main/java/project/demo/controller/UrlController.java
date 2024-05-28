@@ -16,11 +16,11 @@ public class UrlController extends BaseController{
 
 	@FXML
 	public void handleUrlSubmitButtonAction(ActionEvent event) {
-		String SubmittedUrl = url.getText(); 
-		if (SubmittedUrl != null) {
+		String submittedUrl = url.getText(); 
+		if (submittedUrl != null) {
 			new Thread(() -> {
 				// malicious url : https://133806.com/?home=casino&a=x
-				List<Map<String, List<List<String>>>> s = new UrlScan(SubmittedUrl).scan();
+				List<Map<String, List<List<String>>>> s = new UrlScan(submittedUrl).scan();
 				Platform.runLater(() -> {
 					listResult(s);
 					}	

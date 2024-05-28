@@ -14,7 +14,6 @@ public class IpScan {
     }
 
     public List<Map<String, List<List<String>>>> scan() {
-
         BaseScan baseScan = new BaseScan(url);
         return baseScan.scan();
     }  

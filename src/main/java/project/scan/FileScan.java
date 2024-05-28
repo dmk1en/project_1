@@ -19,6 +19,7 @@ import okhttp3.Response;
 public class FileScan {
     private File file;
     private String url;
+    private String xApikey = "50f7f83dad42f5faf6775e773ce419e430a6d37f9a32edfecf4011a2fa26aafa";
 
     public FileScan(File file) throws IOException {
         this.file = file;
@@ -54,17 +55,17 @@ public class FileScan {
                 .url("https://www.virustotal.com/api/v3/files")
                 .post(requestBody)
                 .addHeader("accept", "application/json")
-                .addHeader("x-apikey", "50f7f83dad42f5faf6775e773ce419e430a6d37f9a32edfecf4011a2fa26aafa")
+                .addHeader("x-apikey", xApikey)
                 .build();
         try {
             // Execute the request
-            Response Response = client.newCall(request).execute();
-            if (Response.isSuccessful()) {
+            Response response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
                 BaseScan baseScan = new BaseScan(this.url);
                 return baseScan.scan();	  
-            };
+            }
 
-            Response.close();
+            response.close();
             return null;
             
         }catch (Exception e) {
@@ -80,14 +81,14 @@ public class FileScan {
         //get the upload url for large files
         Request request = new Request.Builder()
             .url("https://www.virustotal.com/api/v3/files/upload_url")
-            .addHeader("x-apikey", "50f7f83dad42f5faf6775e773ce419e430a6d37f9a32edfecf4011a2fa26aafa")
+            .addHeader("x-apikey", xApikey)
             .build();
     
         try {
             Response response = client.newCall(request).execute();
             String json = response.body().string();
             JSONObject jsonObject = new JSONObject(json);
-            String url = jsonObject.getString("data");
+            String urlPost = jsonObject.getString("data");
             response.close();
 
             //upload the file
@@ -97,8 +98,8 @@ public class FileScan {
                 .build();
 
             Request uploadRequest = new Request.Builder()
-                .url(url)
-                .addHeader("x-apikey", "50f7f83dad42f5faf6775e773ce419e430a6d37f9a32edfecf4011a2fa26aafa")
+                .url(urlPost)
+                .addHeader("x-apikey", xApikey)
                 .post(requestBody)
                 .build();
 

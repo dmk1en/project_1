@@ -15,10 +15,10 @@ public class DomainController extends BaseController {
     
     @FXML
 	public void handleDomainSubmitButtonAction(ActionEvent event) {
-		String SubmittedUrl = domain.getText();	
-		if (SubmittedUrl != null) {
+		String submittedDomain = domain.getText();	
+		if (submittedDomain != null) {
 			new Thread(() -> {
-				List<Map<String, List<List<String>>>> s = new DomainScan(SubmittedUrl).scan();
+				List<Map<String, List<List<String>>>> s = new DomainScan(submittedDomain).scan();
 				Platform.runLater(() -> {
 					listResult(s);
 				});

@@ -9,11 +9,11 @@ import org.json.JSONObject;
 
 public class Sort {
     private JSONObject json;
-    private List<List<String>> Malicious = new ArrayList<>();
-    private List<List<String>> Suspicious = new ArrayList<>();
-    private List<List<String>> Undetected = new ArrayList<>();
-    private List<List<String>> Harmless = new ArrayList<>();
-    private List<List<String>> Timeout = new ArrayList<>();
+    private List<List<String>> malicious = new ArrayList<>();
+    private List<List<String>> suspicious = new ArrayList<>();
+    private List<List<String>> undetected = new ArrayList<>();
+    private List<List<String>> harmless = new ArrayList<>();
+    private List<List<String>> timeout = new ArrayList<>();
     
     public Sort(JSONObject json) {
         this.json = json;
@@ -23,11 +23,11 @@ public class Sort {
         classify();
         // [{Type: [[Vendor, Result],[Vendor, Result],...]}; ...]
         Map<String, List<List<String>>> combinedLists = new LinkedHashMap<>();
-        combinedLists.put("Malicious", Malicious);
-        combinedLists.put("Suspicious", Suspicious);
-        combinedLists.put("Harmless", Harmless);
-        combinedLists.put("Undetected", Undetected);
-        combinedLists.put("Timeout", Timeout);
+        combinedLists.put("Malicious", malicious);
+        combinedLists.put("Suspicious", suspicious);
+        combinedLists.put("Harmless", harmless);
+        combinedLists.put("Undetected", undetected);
+        combinedLists.put("Timeout", timeout);
         
         List<Map<String, List<List<String>>>> result = new ArrayList<>();
         result.add(combinedLists);
@@ -50,19 +50,19 @@ public class Sort {
             a.add(result);
             switch (category) {
                 case "malicious":
-                    Malicious.add(a);
+                    malicious.add(a);
                     break;
                 case "suspicious":
-                    Suspicious.add(a);
+                    suspicious.add(a);
                     break;
                 case "undetected":
-                    Undetected.add(a);
+                    undetected.add(a);
                     break;
                 case "harmless":
-                    Harmless.add(a);
+                    harmless.add(a);
                     break;
                 case "timeout":
-                    Timeout.add(a);
+                    timeout.add(a);
                     break;
                 default:
                     // Handle unrecognized category
@@ -71,17 +71,5 @@ public class Sort {
             
         }
     }
-    
-
-     //test
-//    public static void main(String[] args) {
-//        JSONObject jo = new JSONObject();
-//        jo.put("data", new JSONObject().put("attributes", new JSONObject().put("last_analysis_results", new JSONObject().put("Artists Against 419", new JSONObject().put("category", "Malicious")))));
-//
-//        
-//        Sort sort = new Sort(jo);
-//        List<Map<String, List<String>>> combinedLists = sort.combineLists();
-//        System.out.println(combinedLists);
-//    }
 }
 

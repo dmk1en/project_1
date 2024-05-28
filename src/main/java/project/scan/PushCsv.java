@@ -5,9 +5,9 @@ import java.io.IOException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-public class push_csv {
+public class PushCsv {
 	private String jsonData;
-	public push_csv(String json) {
+	public PushCsv(String json) {
 		this.jsonData = json;
 	}
 
@@ -45,8 +45,6 @@ public class push_csv {
                       .append(result)
                       .append('\n');
             }
-
-            System.out.println("Data has been successfully written to " + csvFile);
 
         } catch (IOException e) {
             e.printStackTrace();
