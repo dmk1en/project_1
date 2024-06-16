@@ -3,7 +3,6 @@ package project.scan;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
 import project.other.*;
-import project.other.Sort;
 import okhttp3.Request;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +44,11 @@ public class BaseScan {
                     JSONObject lastAnalysisResults = attributesObject.getJSONObject("last_analysis_results");
                     if (lastAnalysisResults.length() == 0) {
                         System.out.println("Scan not completed yet. Please wait.");
-                        Thread.sleep(10000);
+                        try {
+                            Thread.sleep(10000);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                         return scan();
                     }else {           
 
