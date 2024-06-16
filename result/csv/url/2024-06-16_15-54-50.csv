@@ -1,0 +1,94 @@
+https://133806.com/?home=casino&a=x
+Engine Name,Method,Category,Result
+Artists Against 419,blacklist,harmless,clean
+Snort IP sample list,blacklist,harmless,clean
+PrecisionSec,blacklist,undetected,unrated
+Underworld,blacklist,undetected,unrated
+AutoShun,blacklist,undetected,unrated
+benkow.cc,blacklist,harmless,clean
+Abusix,blacklist,harmless,clean
+Quttera,blacklist,harmless,clean
+Heimdal Security,blacklist,malicious,phishing
+securolytics,blacklist,harmless,clean
+Rising,blacklist,harmless,clean
+alphaMountain.ai,blacklist,harmless,clean
+Chong Lua Dao,blacklist,harmless,clean
+Phishing Database,blacklist,harmless,clean
+PREBYTES,blacklist,harmless,clean
+SafeToOpen,blacklist,undetected,unrated
+Dr.Web,blacklist,harmless,clean
+MalwarePatrol,blacklist,harmless,clean
+EmergingThreats,blacklist,harmless,clean
+Threatsourcing,blacklist,harmless,clean
+Quick Heal,blacklist,harmless,clean
+URLhaus,blacklist,harmless,clean
+Blueliv,blacklist,harmless,clean
+K7AntiVirus,blacklist,harmless,clean
+desenmascara.me,blacklist,harmless,clean
+AlienVault,blacklist,harmless,clean
+Xcitium Verdict Cloud,blacklist,undetected,unrated
+Viettel Threat Intelligence,blacklist,harmless,clean
+GreenSnow,blacklist,harmless,clean
+Webroot,blacklist,harmless,clean
+Sansec eComscan,blacklist,undetected,unrated
+Gridinsoft,blacklist,undetected,unrated
+Phishtank,blacklist,harmless,clean
+Sophos,blacklist,malicious,phishing
+Sangfor,blacklist,harmless,clean
+CRDF,blacklist,malicious,malicious
+VIPRE,blacklist,malicious,malware
+ZeroCERT,blacklist,harmless,clean
+Malwared,blacklist,harmless,clean
+PhishFort,blacklist,undetected,unrated
+Lumu,blacklist,undetected,unrated
+AlphaSOC,blacklist,undetected,unrated
+Emsisoft,blacklist,harmless,clean
+AILabs (MONITORAPP),blacklist,harmless,clean
+Seclookup,blacklist,harmless,clean
+Forcepoint ThreatSeeker,blacklist,harmless,clean
+Bkav,blacklist,undetected,unrated
+BlockList,blacklist,harmless,clean
+Scantitan,blacklist,harmless,clean
+Sucuri SiteCheck,blacklist,harmless,clean
+ThreatHive,blacklist,harmless,clean
+Criminal IP,blacklist,harmless,clean
+Netcraft,blacklist,undetected,unrated
+SOCRadar,blacklist,undetected,unrated
+CMC Threat Intelligence,blacklist,harmless,clean
+Kaspersky,blacklist,malicious,phishing
+G-Data,blacklist,harmless,clean
+ViriBack,blacklist,harmless,clean
+Bfore.Ai PreCrime,blacklist,harmless,clean
+CINS Army,blacklist,harmless,clean
+ESTsecurity,blacklist,harmless,clean
+Feodo Tracker,blacklist,harmless,clean
+0xSI_f33d,blacklist,undetected,unrated
+Certego,blacklist,harmless,clean
+Spam404,blacklist,harmless,clean
+ArcSight Threat Intelligence,blacklist,undetected,unrated
+Cyan,blacklist,undetected,unrated
+Acronis,blacklist,harmless,clean
+URLQuery,blacklist,undetected,unrated
+PhishLabs,blacklist,undetected,unrated
+Cluster25,blacklist,malicious,phishing
+Cyble,blacklist,harmless,clean
+SCUMWARE.org,blacklist,harmless,clean
+Google Safebrowsing,blacklist,harmless,clean
+IPsum,blacklist,harmless,clean
+DNS8,blacklist,harmless,clean
+Ermes,blacklist,undetected,unrated
+Yandex Safebrowsing,blacklist,harmless,clean
+ADMINUSLabs,blacklist,harmless,clean
+OpenPhish,blacklist,harmless,clean
+malwares.com URL checker,blacklist,harmless,clean
+Lionic,blacklist,harmless,clean
+StopForumSpam,blacklist,harmless,clean
+Trustwave,blacklist,suspicious,suspicious
+VX Vault,blacklist,harmless,clean
+Juniper Networks,blacklist,harmless,clean
+CyRadar,blacklist,harmless,clean
+ESET,blacklist,harmless,clean
+Fortinet,blacklist,malicious,phishing
+Antiy-AVL,blacklist,harmless,clean
+BitDefender,blacklist,malicious,phishing
+MalwareURL,blacklist,undetected,unrated

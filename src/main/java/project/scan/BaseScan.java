@@ -2,12 +2,14 @@ package project.scan;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
-import project.sort.Sort;
+import project.other.*;
+import project.other.Sort;
 import okhttp3.Request;
 import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 public class BaseScan {
     protected OkHttpClient client;
@@ -20,8 +22,6 @@ public class BaseScan {
     }
 
     public List<Map<String, List<List<String>>>> scan() {
-        
-
         //Create Request object with the URL
         Request request = new Request.Builder()
                 .url(url)
@@ -39,15 +39,28 @@ public class BaseScan {
                 // Get response body as string
                 String responseBody = response.body().string();
                 if (responseBody != null) {
-                	String json = responseBody;
-                    
-                    // //push the data to a csv file
-                    // PushCsv get = new PushCsv(json);
-                    // get.push();
+                    JSONObject jsonObject = new JSONObject(new JSONTokener(responseBody));
+                    JSONObject dataObject = jsonObject.getJSONObject("data");
+                    JSONObject attributesObject = dataObject.getJSONObject("attributes");
+                    JSONObject lastAnalysisResults = attributesObject.getJSONObject("last_analysis_results");
+                    if (lastAnalysisResults.length() == 0) {
+                        System.out.println("Scan not completed yet. Please wait.");
+                        Thread.sleep(10000);
+                        return scan();
+                    }else {           
 
-                	JSONObject jsonObject = new JSONObject(json);
-                	return new Sort(jsonObject).combineLists();
-                    
+                        //System.out.println(responseBody);
+                        //push the data to a csv file
+                        PushCsv csv = new PushCsv(responseBody);
+                        csv.push();
+
+                        //push the data to a pdf file
+                        PushPdf pdf = new PushPdf(responseBody);
+                        pdf.push();
+                        
+                        //sort the data
+                        return new Sort(jsonObject).combineLists();
+                    }               
                 }
                 return null;
             } else {

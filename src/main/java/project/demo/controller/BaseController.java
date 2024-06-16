@@ -6,19 +6,26 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -39,9 +46,8 @@ public class BaseController {
 	@FXML
 	private Button submitButton;
 
-	
 	@FXML
-	private Label result;
+	private PieChart pieChart;
 	
 	@FXML
 	private GridPane grid;
@@ -58,6 +64,12 @@ public class BaseController {
 			grid.getChildren().clear();
 		}
 		
+		int maliciousNum = 0;
+		int suspiciousNum = 0;
+		int harmlessNum = 0;
+		int undetectedNum = 0;
+		int timeoutNum = 0;
+
 		if (s != null) {
 			int rowNum = 0;
 			for (Map<String, List<List<String>>> categoryMap : s) {
@@ -81,26 +93,37 @@ public class BaseController {
 									imageUrl = "/project/resources/image/exclamation-mark.png";
 									vendorLabel.setStyle(redBlack);
 									resultLabel.setStyle(redBlack);
+									maliciousNum ++;
 									break;
 								case "Suspicious":
 									imageUrl = "/project/resources/image/yellow-exclamation-mark.png";
 									vendorLabel.setStyle(yellowBlack);
 									resultLabel.setStyle(yellowBlack);
+									suspiciousNum ++;
 									break;
 								case "Undetected":
 									imageUrl = "/project/resources/image/question.png";
 									vendorLabel.setStyle(grayBlack);
 									resultLabel.setStyle(grayBlack);
+									undetectedNum ++;
 									break;
 								case "Harmless":
 									imageUrl = "/project/resources/image/checkmark.png";
 									vendorLabel.setStyle(whiteBlack);
 									resultLabel.setStyle(whiteBlack);
+									harmlessNum ++;
+									break;
+								case "Timeout":
+									imageUrl = "/project/resources/image/question.png";
+									vendorLabel.setStyle(grayBlack);
+									resultLabel.setStyle(grayBlack);
+									timeoutNum ++;
 									break;
 								default:
 									imageUrl = "/project/resources/image/checkmark.png";
 									vendorLabel.setStyle(whiteBlack);
 									resultLabel.setStyle(whiteBlack);
+									harmlessNum ++;
 									break;
 							}
 							Image image = new Image(imageUrl);
@@ -117,6 +140,38 @@ public class BaseController {
 					}
 				}
 			}
+			ObservableList<PieChart.Data> pieChartData = 
+			FXCollections.observableArrayList(
+			new PieChart.Data("Malicious",maliciousNum),
+			new PieChart.Data("Suspicious",suspiciousNum),
+			new PieChart.Data("Harmless",harmlessNum),
+			new PieChart.Data("Undetected/Timeout",undetectedNum+timeoutNum)
+			);
+
+			pieChart.titleProperty().set("Results");
+			pieChart.setPrefSize(500, 300);
+			pieChart.setLabelsVisible(false);
+			pieChart.setData(pieChartData);
+			((Label) pieChart.lookup(".chart-title")).setTextFill(Color.web("#ffffff"));
+			((Label) pieChart.lookup(".chart-title")).setStyle("-fx-font-size: 30px;");
+
+			for (final PieChart.Data data : pieChartData) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED,
+					new EventHandler<MouseEvent>() {
+						@Override public void handle(MouseEvent e) {
+							//System.out.println("enter");
+							Tooltip tooltip = new Tooltip();
+							tooltip.setText( (int) data.getPieValue() + "");
+							Tooltip.install(data.getNode(), tooltip);
+						}
+					}
+				);
+
+			}
+		}else {
+			TextArea result = new TextArea("No results found");
+			result.setEditable(false);
+			grid.add(result, 0, 0);
 		}
 	}
 
@@ -124,7 +179,7 @@ public class BaseController {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(fxml));
 			Stage stage = (Stage) submitButton.getScene().getWindow();
-			Scene scene = new Scene(root,1000,700);
+			Scene scene = new Scene(root,1300,700);
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {

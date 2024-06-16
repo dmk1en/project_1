@@ -12,7 +12,7 @@ public class App extends Application
     public void start(Stage primaryStage) throws Exception {
         Parent loader = FXMLLoader.load(getClass().getResource("/project/resources/fxml/url.fxml"));
         primaryStage.setTitle("test");
-        primaryStage.setScene(new Scene(loader,1000,700));
+        primaryStage.setScene(new Scene(loader,1300,700));
         primaryStage.show();
     }
 	

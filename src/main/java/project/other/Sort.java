@@ -1,4 +1,4 @@
-package project.sort;
+package project.other;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
