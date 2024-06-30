@@ -3,6 +3,7 @@ package project.scan;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -67,11 +68,10 @@ public class FileScan {
             }
 
             response.close();
-            return null;
+            return Collections.emptyList();
             
         }catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            return Collections.emptyList();
         }
     }
 
@@ -112,12 +112,11 @@ public class FileScan {
                 return baseScan.scan();	  
             }else{
                     uploadResponse.close();
-                    return null;
+                    return Collections.emptyList();
                 }
             }catch (Exception e) {
-                e.printStackTrace();
             }
-        return null;
+        return Collections.emptyList();
     }
 
 }

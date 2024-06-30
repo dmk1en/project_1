@@ -107,12 +107,6 @@ public class BaseController {
 									resultLabel.setStyle(grayBlack);
 									undetectedNum ++;
 									break;
-								case "Harmless":
-									imageUrl = "/project/resources/image/checkmark.png";
-									vendorLabel.setStyle(whiteBlack);
-									resultLabel.setStyle(whiteBlack);
-									harmlessNum ++;
-									break;
 								case "Timeout":
 									imageUrl = "/project/resources/image/question.png";
 									vendorLabel.setStyle(grayBlack);
@@ -159,7 +153,6 @@ public class BaseController {
 				data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED,
 					new EventHandler<MouseEvent>() {
 						@Override public void handle(MouseEvent e) {
-							//System.out.println("enter");
 							Tooltip tooltip = new Tooltip();
 							tooltip.setText( (int) data.getPieValue() + "");
 							Tooltip.install(data.getNode(), tooltip);

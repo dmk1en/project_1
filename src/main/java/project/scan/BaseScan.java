@@ -4,6 +4,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Response;
 import project.other.*;
 import okhttp3.Request;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -42,16 +44,9 @@ public class BaseScan {
                     JSONObject attributesObject = dataObject.getJSONObject("attributes");
                     JSONObject lastAnalysisResults = attributesObject.getJSONObject("last_analysis_results");
                     if (lastAnalysisResults.length() == 0) {
-                        System.out.println("Scan not completed yet. Please wait.");
-                        try {
-                            Thread.sleep(10000);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                        }
+                        Thread.sleep(10000);
                         return scan();
                     }else {           
-                        
-                        //System.out.println("Base Scan :"+responseBody);
                         //push the data to a csv file
                         PushCsv csv = new PushCsv(responseBody);
                         csv.push();
@@ -64,13 +59,13 @@ public class BaseScan {
                         return new Sort(jsonObject).combineLists();
                     }               
                 }
-                return null;
+                return Collections.emptyList();
             } else {
-                return null;
+                return Collections.emptyList();
             }
         } catch (Exception e) {
             Thread.currentThread().interrupt();
-            return null;
+            return Collections.emptyList();
         }
         
 	}

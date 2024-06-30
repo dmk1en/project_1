@@ -1,6 +1,7 @@
 package project.scan;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -15,33 +16,34 @@ import okhttp3.Response;
 
 public class UrlScan{
 	private String url;
+	private String link;
 	private String xApikey = "50f7f83dad42f5faf6775e773ce419e430a6d37f9a32edfecf4011a2fa26aafa";
 	
-	public UrlScan(String url) {
+	public UrlScan(String link) {
 		this.url = "https://www.virustotal.com/api/v3/urls/";
+		this.link = link;
 	}
 	
 	public List<Map<String, List<List<String>>>> scan() {
 		try{
-			if (scanUrl(url)){
+			if (scanUrl(this.link)){
 				BaseScan baseScan = new BaseScan(this.url);
 				return baseScan.scan();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+			return Collections.emptyList();
 		}
-		return null;
+		return Collections.emptyList();
 	}
 
-	public boolean scanUrl(String url) {
+	public boolean scanUrl(String link) {
 		OkHttpClient client = new OkHttpClient();
 		RequestBody requestBody = new MultipartBody.Builder()
 				.setType(MultipartBody.FORM)
-				.addFormDataPart("url", url)
+				.addFormDataPart("url", link)
 				.build();
 		Request request = new Request.Builder()
-				.url("https://www.virustotal.com/api/v3/urls")
+				.url(this.url)
 				.post(requestBody)
 				.addHeader("accept", "application/json")
 				.addHeader("content-type", "application/x-www-form-urlencoded")
@@ -52,7 +54,6 @@ public class UrlScan{
 			String responseString = response.body().string();
 			JSONObject jsonObject = new JSONObject(responseString);
 			String links = jsonObject.getJSONObject("data").getJSONObject("links").getString("self");
-			System.out.println(links);
 			request = new Request.Builder()
 					.url(links)
 					.get()
@@ -67,7 +68,6 @@ public class UrlScan{
 			response.close();
 			return response.isSuccessful();
 		} catch (IOException e) {
-			e.printStackTrace();
 			return false;
 		}
 	}	

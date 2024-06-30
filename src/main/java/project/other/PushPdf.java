@@ -60,7 +60,6 @@ public class PushPdf {
             Pdf pdf = new Pdf(pdfFile);
             pdf.createPdf(lastAnalysisResults,lastAnalysisStats,name);
         } catch (Exception e) {
-            e.printStackTrace();
         }
 
 
