@@ -46,7 +46,7 @@ public class BaseScan {
                         try {
                             Thread.sleep(10000);
                         } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
+                            Thread.currentThread().interrupt();
                         }
                         return scan();
                     }else {           
@@ -69,7 +69,7 @@ public class BaseScan {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
             return null;
         }
         
