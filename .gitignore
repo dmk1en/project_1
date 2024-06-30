@@ -1,14 +1,11 @@
 # Maven specific
 target/
+result/
 
 # Eclipse specific
 .classpath
 .project
 .settings/
-
-# IDE specific directories (IntelliJ, NetBeans, etc.)
-.idea/
-nbproject/
 
 # Logs
 *.log

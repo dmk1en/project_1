@@ -23,10 +23,10 @@ public class FileScan {
 
     public FileScan(File file) throws IOException {
         this.file = file;
-        this.url = "https://www.virustotal.com/api/v3/files/" + getFileChecksum(file.getAbsolutePath());
+        this.url = "https://www.virustotal.com/api/v3/files/" + getFileHash(file.getAbsolutePath());
     }
 
-    public String getFileChecksum(String filePath) throws IOException {
+    public String getFileHash(String filePath) throws IOException {
         FileInputStream fis = new FileInputStream(filePath);
         String sha256Hex = DigestUtils.sha256Hex(fis);
         fis.close();
@@ -60,6 +60,7 @@ public class FileScan {
         try {
             // Execute the request
             Response response = client.newCall(request).execute();
+            System.out.println(response.body().string());
             if (response.isSuccessful()) {
                 BaseScan baseScan = new BaseScan(this.url);
                 return baseScan.scan();	  

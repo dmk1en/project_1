@@ -32,7 +32,6 @@ public class BaseScan {
         try {
             // Execute the request and get the response
             Response response = client.newCall(request).execute();
-            
             // Check if the request was successful (status code 200)
             if (response.isSuccessful()) {
                 // Get response body as string
@@ -51,8 +50,8 @@ public class BaseScan {
                         }
                         return scan();
                     }else {           
-
-                        //System.out.println(responseBody);
+                        
+                        //System.out.println("Base Scan :"+responseBody);
                         //push the data to a csv file
                         PushCsv csv = new PushCsv(responseBody);
                         csv.push();
