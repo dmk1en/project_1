@@ -20,13 +20,13 @@ public class UrlScan{
 	private String xApikey = "50f7f83dad42f5faf6775e773ce419e430a6d37f9a32edfecf4011a2fa26aafa";
 	
 	public UrlScan(String link) {
-		this.url = "https://www.virustotal.com/api/v3/urls/";
+		this.url = "https://www.virustotal.com/api/v3/urls";
 		this.link = link;
 	}
 	
 	public List<Map<String, List<List<String>>>> scan() {
 		try{
-			if (scanUrl(this.link)){
+			if (scanUrl(link)){
 				BaseScan baseScan = new BaseScan(this.url);
 				return baseScan.scan();
 			}
@@ -62,7 +62,7 @@ public class UrlScan{
 			response = client.newCall(request).execute();
 			responseString = response.body().string();
 			jsonObject = new JSONObject(responseString);
-			
+		
 			links = jsonObject.getJSONObject("data").getJSONObject("links").getString("item");
 			this.url = links;
 			response.close();

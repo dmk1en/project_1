@@ -54,7 +54,6 @@ public class Pdf {
 
             document.close();
         } catch (DocumentException | FileNotFoundException e) {
-            e.printStackTrace();
         }
     }
 }

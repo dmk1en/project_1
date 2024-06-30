@@ -88,7 +88,6 @@ public class PushCsv {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -103,7 +102,6 @@ public class PushCsv {
             PushCsv get = new PushCsv(json);
             get.push();
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
     }

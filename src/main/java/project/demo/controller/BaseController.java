@@ -70,7 +70,7 @@ public class BaseController {
 		int undetectedNum = 0;
 		int timeoutNum = 0;
 
-		if (s != null) {
+		if (!s.isEmpty()) {
 			int rowNum = 0;
 			for (Map<String, List<List<String>>> categoryMap : s) {
 				for (Map.Entry<String, List<List<String>>> entry : categoryMap.entrySet()) {
@@ -176,7 +176,6 @@ public class BaseController {
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 
