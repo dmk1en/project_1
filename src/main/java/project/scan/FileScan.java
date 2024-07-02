@@ -61,7 +61,6 @@ public class FileScan {
         try {
             // Execute the request
             Response response = client.newCall(request).execute();
-            System.out.println(response.body().string());
             if (response.isSuccessful()) {
                 BaseScan baseScan = new BaseScan(this.url);
                 return baseScan.scan();	  
